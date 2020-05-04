@@ -1,0 +1,15 @@
+
+.carregando {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // padding: 8px;
+  display: grid;
+  grid-template-columns: auto;
+  justify-items: center;
+  align-items: center;
+  background-color: white;
+  z-index: 100;
+}

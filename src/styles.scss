@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+a[text-decoration-none] {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+@mixin space ($attr, $prop, $top, $right, $bottom, $left) {
+  [#{$attr}] {
+    // background-color: blueviolet;
+    @if ($top != null) { #{$prop}-top: $top!important; }
+    @if ($right != null) { #{$prop}-right: $right!important; };
+    @if ($bottom != null) { #{$prop}-bottom: $bottom!important; };
+    @if ($left != null) { #{$prop}-left: $left!important; };
+  }
+}
+
+@include space ('margin', 'margin', 8px, 8px, 8px, 8px);
+@include space ('margin-8px', 'margin', 8px, 8px, 8px, 8px);
+@include space ('margin-16px', 'margin', 16px, 16px, 16px, 16px);
+@include space ('margin-top', 'margin', 8px, null, null, null);
+@include space ('margin-right', 'margin', null, 8px, null, null);
+@include space ('margin-bottom', 'margin', null, null, 8px, null);
+@include space ('margin-left', 'margin', null, null, null, 8px);
+@include space ('margin-top-16px', 'margin', 16px, null, null, null);
+@include space ('margin-right-16px', 'margin', null, 16px, null, null);
+@include space ('margin-bottom-16px', 'margin', null, null, 16px, null);
+@include space ('margin-left-16px', 'margin', null, null, null, 16px);
+@include space ('no-margin', 'margin', 0px, 0px, 0px, 0px);
+
+@include space ('padding', 'padding', 8px, 8px, 8px, 8px);
+@include space ('padding-8px', 'padding', 8px, 8px, 8px, 8px);
+@include space ('padding-16px', 'padding', 16px, 16px, 16px, 16px);
+@include space ('padding-top', 'padding', 8px, null, null, null);
+@include space ('padding-right', 'padding', null, 8px, null, null);
+@include space ('padding-bottom', 'padding', null, null, 8px, null);
+@include space ('padding-left', 'padding', null, null, null, 8px);
+@include space ('padding-top-16px', 'padding', 16px, null, null, null);
+@include space ('padding-right-16px', 'padding', null, 16px, null, null);
+@include space ('padding-bottom-16px', 'padding', null, null, 16px, null);
+@include space ('padding-left-16px', 'padding', null, null, null, 16px);
+@include space ('no-padding', 'padding', 0px, 0px, 0px, 0px);
+
+.mat-list-item-content:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.page-content {
+  width: 100%;
+  height: calc(100% - 64px);
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: rgb(245, 245, 245);
+}
+
+
+@import 'theme/custom.scss';

@@ -1,0 +1,88 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    *ngIf="drawer.isMobile"
+    (click)="drawer.toggleState()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="!drawer.isMobile">
+    <mat-icon>mail</mat-icon>
+  </button>
+  Contato
+</mat-toolbar>
+<div class="page-content">
+  <div class="form-wrapper">
+    <mat-card class="form-card">
+
+
+      <!-- título -->
+      <mat-card-title>Deixe sua Mensagem</mat-card-title>
+      <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+        <!-- nome -->
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            placeholder="Qual o seu nome?"
+            formControlName="nome"
+            autocomplete="off"
+            maxlength="100"
+          />
+          <mat-error *ngIf="formGroup.controls.nome?.errors?.msg">
+            {{ formGroup.controls.nome?.errors?.msg || '' }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- e-mail -->
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input
+            matInput
+            placeholder="Qual o seu e-mail?"
+            formControlName="email"
+            [errorStateMatcher]="matcher"
+            [textMask]="emailMask"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="formGroup.controls.email?.errors?.msg">
+            {{ formGroup.controls.email?.errors?.msg || '' }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- fone -->
+        <mat-form-field>
+          <mat-label>Fone</mat-label>
+          <input
+            matInput
+            placeholder="Qual o seu telefone?"
+            formControlName="fone"
+            [textMask]="foneMask"
+            autocomplete="off"
+          />
+          <mat-error *ngIf="formGroup.controls.fone?.errors?.msg">
+            {{ formGroup.controls.fone?.errors?.msg || '' }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- mensagem -->
+        <mat-form-field>
+          <mat-label>Mensagem</mat-label>
+          <textarea
+            matInput
+            formControlName="mensagem"
+            placeholder="Deixe uma mensagem."
+            autocomplete="off"
+            maxlength="240"
+          ></textarea>
+          <mat-error *ngIf="formGroup.controls.mensagem?.errors?.msg">
+            {{ formGroup.controls.mensagem?.errors?.msg || '' }}
+          </mat-error>
+        </mat-form-field>
+
+        <!-- enviar -->
+        <button margin-top mat-flat-button color="accent">Enviar</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

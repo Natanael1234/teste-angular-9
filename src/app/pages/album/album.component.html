@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="location.back()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  Album <span class="titulo-album">{{album?.title }}</span>
+</mat-toolbar>
+
+<!-- loading -->
+<nx-loading
+  [loading]="carregandoAlbum || carregandoImagens"
+></nx-loading>
+
+<div class="page-content">
+  <!-- imagens -->
+  <div class="grid">
+    <mat-card no-padding class="card-imagem" *ngFor="let imagem of imagens">
+      <mat-card-title
+        class="titulo-imagem"
+        padding-top-16px
+        padding-right-16px
+        padding-left-16px>
+        {{ imagem.title }}
+      </mat-card-title>
+      <img [src]="imagem.thumbnailUrl" alt="imagem.title" class="thumbnail"/>
+    </mat-card>
+  </div>
+</div>

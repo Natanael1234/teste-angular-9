@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="location.back()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  Usuário
+</mat-toolbar>
+
+<!-- loading -->
+<nx-loading [loading]="carregandoUsuario || carregandoAlbuns"></nx-loading>
+
+<div class="page-content">
+
+  <div class="grid">
+
+    <!-- usuário -->
+    <div class="wrapper-usuario">
+      <mat-card class="card-usuario">
+        <mat-card-title>Dados Pessoais</mat-card-title>
+        <mat-card-content padding-top-16px>
+          <p><b>Nome: </b> {{ usuario?.name || "..." }}</p>
+          <p><b>E-mail: </b><a text-decoration-none [href]="'mailto:'+ usuario?.email">{{usuario?.email}}</a></p>
+          <p><b>Fone: </b><a text-decoration-none [href]="'tel:+'+usuario?.phone">{{ usuario?.phone }}</a></p>
+          <p><b>Site: </b><a text-decoration-none [href]="'http://www.'+usuario?.website">{{ usuario?.website }}</a></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- usuário -->
+    <div class="wrapper-empresa">
+      <mat-card class="card-empresa">
+        <mat-card-title>Empresa</mat-card-title>
+        <mat-card-content padding-top-16px>
+          <p><b>Nome:</b> {{ usuario?.company?.name }}</p>
+          <p><b>Slogan:</b> {{ usuario?.company?.catchPhrase }}</p>
+          <p><b>Área: </b>{{ usuario?.company.bs }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- albuns do usuário -->
+    <div class="wrapper-albuns">
+      <mat-card no-padding class="albuns-container">
+        <mat-card-title padding-top-16px padding-right-16px padding-left-16px>Albuns</mat-card-title>
+        <mat-list *ngIf="albuns && !carregandoAlbuns && !erroAlbuns">
+          <mat-list-item *ngIf="!albuns?.length">
+            Nenhum album encontrado.
+          </mat-list-item>
+
+          <a
+            [routerLink]="usuario && album? ['/albuns/', usuario.id, album.id] : null"
+            mat-list-item
+            matRipple
+            text-decoration-none
+            class="titulo-album"
+            *ngFor="let album of albuns">
+            <mat-divider></mat-divider>
+            {{ album.title }}
+          </a>
+        </mat-list>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>

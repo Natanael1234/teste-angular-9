@@ -1,4 +1,8 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<mat-sidenav-container class="conteiner">
+  <mat-sidenav class="menu-lateral" [mode]="drawer.mode" [opened]="drawer.isOpen">
+    <nx-menu-lateral></nx-menu-lateral>
+  </mat-sidenav>
+  <mat-sidenav-content class="conteudo">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

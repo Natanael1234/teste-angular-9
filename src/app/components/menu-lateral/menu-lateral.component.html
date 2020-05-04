@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-icon margin>photo</mat-icon>  Álbum de Fotos
+</mat-toolbar>
+<div class="container">
+  <mat-list class="lista">
+    <!-- <a matRipple mat-list-item [routerLink]="['albuns']" text-decoration-none>
+      <mat-icon margin-right>photo_library</mat-icon> Albuns
+    </a> -->
+    <a matRipple mat-list-item [routerLink]="['usuarios']" text-decoration-none (click)="drawer.close()">
+      <mat-icon margin-right>people</mat-icon> Usuários
+    </a>
+    <a matRipple mat-list-item [routerLink]="['contato']" text-decoration-none (click)="drawer.close()">
+      <mat-icon margin-right>mail</mat-icon> Contato
+    </a>
+  </mat-list>
+</div>

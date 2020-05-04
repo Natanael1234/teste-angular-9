@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button *ngIf="drawer.isMobile" (click)="drawer.toggleState()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="!drawer.isMobile">
+    <mat-icon>people</mat-icon>
+  </button>
+  Usuários
+</mat-toolbar>
+
+<div class="page-content">
+
+  <!-- loading -->
+  <nx-loading [loading]="carregando"></nx-loading>
+
+  <div padding>
+    <mat-card no-padding>
+      <mat-list *ngIf="usuarios">
+        <a
+          mat-list-item
+          matRipple
+          *ngFor="let usuario of usuarios"
+          [routerLink]="['/usuarios', usuario.id]"
+          text-decoration-none>
+          {{ usuario.name }}
+          <mat-divider></mat-divider>
+        </a>
+      </mat-list>
+    </mat-card>
+  </div>
+
+</div>
+

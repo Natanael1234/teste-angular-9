@@ -1,0 +1,69 @@
+.page-content {
+
+  $breakpoint: 768px;
+  // background-color: indianred;
+
+  .grid {
+    display: grid;
+    padding: 8px;
+    grid-template-rows: auto auto;
+    grid-template-columns: 100%;
+
+    row-gap: 8px;
+    // background-color: orangered;
+
+    // usuario
+    .wrapper-usuario {
+      // background-color: deeppink;
+      @media (min-width: $breakpoint) {
+        // background-color: pink;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        .card-usuario {
+          height: 100%;
+        }
+      }
+    }
+
+    // empresa
+    .wrapper-empresa {
+      // background-color: rebeccapurple;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      @media (min-width: $breakpoint) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        position: relative;
+        .card-empresa {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+    }
+
+    // albuns
+    .wrapper-albuns {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    @media (min-width: $breakpoint) {
+      grid-template-rows: auto auto auto;
+      grid-template-columns: calc(50% - 8px) calc(50%);
+      column-gap: 8px;
+    }
+
+  }
+
+}
+
+
+.titulo-album {
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  // white-space: nowrap;
+}
